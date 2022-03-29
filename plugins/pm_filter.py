@@ -135,7 +135,14 @@ async def advantage_spoll_choker(bot, query):
             k = (movie, files, offset, total_results)
             await auto_filter(bot, query, k)
         else:
-            k = await query.message.edit('<b>This Movie or Series not found in my database.</b>\n<code>Check the Spelling is Correct or Not.\nPlease Await Administrator of this Group will Respond to you..</code>')
+            k = await query.message.edit('Hello 👋〘 {mention} 〙,\nCouldnt Find {query}?\nPlease Click Your Request Movie Name')
+            reply_markup = InlineKeyboardMarkup([[
+                 InlineKeyboardButton("🎗️ Google 🎗️", url=f"https://www.google.com/search?q={reply}")
+                 ],[
+                 InlineKeyboardButton("🔍IMDB", url=f"https://www.imdb.com/find?q={reply}"),
+                 InlineKeyboardButton("Wikipedia🔎", url=f"https://en.m.wikipedia.org/w/index.php?search={reply}")
+                 ]]  
+                )    
             await asyncio.sleep(10)
             await k.delete()
 
